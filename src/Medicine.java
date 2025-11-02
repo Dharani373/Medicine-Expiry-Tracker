@@ -1,57 +1,63 @@
-
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Medicine {
+public class Medicine implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String name;
     private String batchNumber;
-    private int  quantity;
+    private int quantity;
     private LocalDate expiryDate;
 
-    Medicine(){
-
-    }
-    
-    public Medicine(String nm,String batchNo){
-        this.name=nm;
-        this.batchNumber=batchNo;
-    }
-
-    public Medicine(String nm,String batchNo,int quantity,LocalDate date){
-        this.name=nm;
-        this.batchNumber=batchNo;
-        this.quantity=quantity;
-        this.expiryDate=date;
+    // 🔹 Constructor
+    public Medicine(String name, String batchNumber, int quantity, LocalDate expiryDate) {
+        this.name = name;
+        this.batchNumber = batchNumber;
+        this.quantity = quantity;
+        this.expiryDate = expiryDate;
     }
 
-    public String getName(){
-        return this.name;
+    // 🔹 Getters
+    public String getName() {
+        return name;
     }
 
-    public String getBatchNumber(){
-        return  this.batchNumber;
+    public String getBatchNumber() {
+        return batchNumber;
     }
 
-    public int getQuantity(){
-        return this.quantity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public LocalDate getExpiryDate(){
-        return  this.expiryDate;
+    public LocalDate getExpiryDate() {
+        return expiryDate;
     }
 
-    public void setName(String nm){
-        this.name=nm;
+    // 🔹 Setters
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setBatchNumber(String batchNo){
-        this.batchNumber=batchNo;
+    public void setBatchNumber(String batchNumber) {
+        this.batchNumber = batchNumber;
     }
 
-    public void setQuantity(int quantity){
-        this.quantity=quantity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public void setExpiryDate(LocalDate date){
-        this.expiryDate=date;
+    public void setExpiryDate(LocalDate expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
+    // 🔹 Display format
+    @Override
+    public String toString() {
+        return "Medicine Name: " + name +
+               "\nBatch No: " + batchNumber +
+               "\nQuantity: " + quantity +
+               "\nExpiry Date: " + expiryDate +
+               "\n--------------------------";
     }
 }
