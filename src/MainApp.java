@@ -6,6 +6,7 @@ public class MainApp{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         MedicineManager manager = new MedicineManager();
+        manager.loadFromCSV("medicines.csv");
 
         while (true) {
             System.out.println("\n====== Medicine Expiry Tracker ======");
@@ -17,7 +18,10 @@ public class MainApp{
             System.out.println("6. Check Expired Medicines");
             System.out.println("7. Remove Expired Medicines");
             System.out.println("8. Show Near Expiry Medicines");
-            System.out.println("9. Exit");
+            System.out.println("9. Sort Medicines");
+            System.out.println("10. Check Low Stock Medicines");
+            System.out.println("11. Exit");
+
             System.out.print("Enter your choice: ");
             
             int choice;
@@ -95,7 +99,20 @@ public class MainApp{
                     break;
 
                 case 9:
+                    System.out.println("Sort by: 1. Name  2. Expiry Date  3. Quantity");
+                    int sortChoice = Integer.parseInt(sc.nextLine());
+                    manager.sortMedicines(sortChoice);
+                break;
+
+                case 10:
+                    System.out.print("Enter stock threshold (e.g., 10): ");
+                    int threshold = Integer.parseInt(sc.nextLine());
+                    manager.filterLowStock(threshold);
+                break;
+
+                case 11:
                     System.out.println(" Exiting the program. Goodbye!");
+                     manager.saveToCSV("medicines.csv");
                     sc.close();
                     return;
 
